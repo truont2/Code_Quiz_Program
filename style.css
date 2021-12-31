@@ -1,0 +1,41 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    padding: 10px 0;
+    width: 100%;
+    border: 1px solid black;
+    box-shadow: 10x 10px 10px grey;
+    display: flex;
+    justify-content: space-between;
+}
+
+h2{
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+main {
+    display: felx; 
+    justify-content: center;
+}
+
+#container {
+    display: block;
+    margin: 60px auto;
+    text-align: center;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 60vw;
+    background-color: #f0ead6;
+}
+
+
+ol {
+    text-align: left;
+    margin-left: 20px;
+    display: none;
+}
