@@ -39,3 +39,12 @@ ol {
     margin-left: 20px;
     display: none;
 }
+
+.hide {
+    display: none;
+}
+
+.btn {
+    width: 20vw;
+    padding: 10px;
+}

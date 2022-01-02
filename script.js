@@ -3,11 +3,12 @@ var title = document.querySelector('#card-title'); //heading
 var card = document.querySelector('#container'); //div vontianing quiz
 var butt = document.querySelector("#start-button"); //start button
 var todoList = document.querySelector("#todo-list"); //ordered list
-var form = document.querySelector("#form"); //form
+var formList = document.querySelector("#formList"); //form
 var de = document.querySelector("#d"); //description
-var check = document.querySelector("#check"); //text for right or wrong 
-var scoreInputArea = document.querySelector("#scoreInput"); //text input for the initials
-
+var answerStatus = document.querySelector("#answerStatus"); //text for right or wrong 
+var textInput = document.getElementById("input");
+var submitButton = document.querySelector("#submitButton");
+var highscore1 = document.querySelector("#highscore");
 
 var questions = ["question1", "question2", "question3"];
 var arr1 = ["hello1", "idk1", "kaboom1","cry1"];
@@ -17,13 +18,13 @@ var finalArr = ["","","",""];
 var options = [arr1, arr2, arr3, finalArr];
 // each question will be the outer array index, its answers stored in a nested array
 var answers = ["hello1", "idk2", "idk3"];
-var score = 0;
 var timeLeft = 100;
 var timeSubtracted = 1;
+var scores = [];
 
 
 function countdown() {
-    times.textContent = 'time: ' + timeLeft;
+    times.textContent = 'Time: ' + timeLeft;
 
     var timeInterval = setInterval(() => {
         // add something so that it stops counting down once the game ends
@@ -39,6 +40,13 @@ function countdown() {
 }
 
 function init() {
+
+    var storedScores = JSON.parse(localStorage.getItem("highscore"));
+    
+    if(storedScores !== null) {
+        scores = storedScores;
+    }
+
     title.textContent = "Code Quiz";
     card.appendChild(butt);
 
@@ -55,8 +63,6 @@ function init() {
         }
         de.setAttribute("style", "display: none");
         butt.setAttribute("style", "display: none");
-        // card.removeChild(card.childNodes[3]);
-        // card.removeChild(card.childNodes[10]);
     });
 }
 
@@ -79,8 +85,10 @@ function change(id) {
         var item = document.getElementById("li2").innerHTML;  //returns content inside an element
         if (options[i].includes(item)) {
             currentList = options[i + 1]
-            console.log("yello " + currentList)
+        } else {
+            currentList = options[i];
         }
+        
     }
     var chosen = document.getElementById(id).innerHTML;
 
@@ -92,29 +100,29 @@ function change(id) {
             var curr = document.getElementById("li"+ (i + 1));
             curr.textContent = currentList[i];
         }
-        console.log("answer chosen " + chosen);
         compareAnsw(chosen);
           
     }
     return chosen;
 }
 
-function compareAnsw(answer) {
+function compareAnsw(answer) { 
     console.log("answer = " + answers[q - 1]);
     if (answer === answers[q - 1]) {
-        check.textContent = "Correct" + q;
-        score++;
+        answerStatus.textContent = "Correct";
         setTimeout(() => {
-            check.textContent="";
+            answerStatus.textContent="";
         }, 2000);
     } else {
-        check.textContent = "WRONG" + q;
+        answerStatus.textContent = "WRONG";
         timeLeft = timeLeft - 10;
         setTimeout(() => {
-            check.textContent="";
+            answerStatus.textContent="";
         }, 2000);
     }
 }
+
+
 
 // functions below work on displaying highscore
 function highscore() {
@@ -130,48 +138,72 @@ function highscore() {
     de.setAttribute("style", "display: block");
     de.textContent = `Your Final score is - ${timeLeft}`;
 
+    textInput.classList.remove("hide");
+    submitButton.classList.remove('hide');
     // create text input area 
-    var highscoreInput = document.createElement("input");
-    highscoreInput.setAttribute("id", "scoreInput");
-    highscoreInput.setAttribute("type","text");
-    highscoreInput.setAttribute("placeholder", "input score")
-    highscoreInput.setAttribute("name", "scoreInput")
-    form.appendChild(highscoreInput);
-    console.log(form.childNodes);
-    var scoreList = document.createElement("ul");
-    card.appendChild(scoreList);
-    scoreList.setAttribute("id", "scoreList");
-    // console.log("new created list tag" + scoreList); code is good up to here 
-    initScores()
+    // var highscoreInput = document.createElement("input");
+    // highscoreInput.setAttribute("id", "scoreInput");
+    // highscoreInput.setAttribute("type","text");
+    // highscoreInput.setAttribute("placeholder", "input score")
+    // highscoreInput.setAttribute("name", "scoreInput")
+        //need to target form itself
+    // formList.appendChild(highscoreInput);
+
+    // var scoreInputArea = document.querySelector("#scoreInput"); //text input for the initials
+    // console.log("issue" + scoreInputArea);
+
+    // var scoreList = document.createElement("ul");
+    // card.appendChild(scoreList);
+    // scoreList.setAttribute("id", "scoreList");
+    // initScores()
 }
 
-function initScores() {
-    //highscore stuff
+
+// function initScores() {
+//     //highscore stuff
     
-    var storedScores = JSON.parse(localStorage.getItem("highscore"));
+//     var storedScores = JSON.parse(localStorage.getItem("highscore"));
 
-    // If todos were retrieved from localStorage, update the todos array to it
-    if (storedScores !== null) {
-        scores = storedScores;
-    }
+//     // If todos were retrieved from localStorage, update the todos array to it
+//     if (storedScores !== null) {
+//         scores = storedScores;
+//     }
 
-    renderHighscores();
-}
-// make the scores show up on the screen
-var scores = [];
-var scoreList1 = document.querySelector("scoreList");
+//     renderHighscores();
+// }
+// // make the scores show up on the screen
+// var scores = [];
+// var scoreList = document.querySelector("scoreList");
 
-function renderHighscores() {
-    // scoreList1.innerHTML = "";
+// function renderHighscores() {
+//     scoreList.innerHTML = "";
 
-    for(let i = 0; i < scores.length; i++) {
-        var li = document.createElement("li");
-        li.textContent = scores[i];
-        scoreList1.appendChild(li);
-    }
+//     for(let i = 0; i < scores.length; i++) {
+//         var li = document.createElement("li");
+//         li.textContent = scores[i];
+//         scoreList.appendChild(li);
+//     }
    
 
-}
+// }
+
+submitButton.addEventListener("click", (event) => {
+    event.preventDefault();
+    
+    
+    var userInitials = textInput.value.trim();
+
+    if(userInitials == "") {
+        return;
+    }
+
+    scores.push(`${userInitials} - ${timeLeft}`);
+    textInput.value = "";
+
+    storeScores();
+
+});
+
 // store the scores 
 function storeScores() {
     localStorage.setItem("highscore", JSON.stringify(scores));
@@ -179,24 +211,12 @@ function storeScores() {
 
 //listen for click of a button to sotre scores by submitting the form \
 
-
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    // messing up rn 
-    var userInitials = scoreInputArea.value.trim();
-    console.log(userInitials + " +++++++++");
-
-    if(userInitials == "") {
-        return;
-    }
-
-    scores.push(`${userInitials} - ${score}`);
-    scoreInputArea = "";
-
-    storeScores();
-    renderHighscores();
-
+highscore1.addEventListener("click", () => {
+    window.location.href='./highscore.html';
 });
+
+
+
 
 // clear list of scores 
 

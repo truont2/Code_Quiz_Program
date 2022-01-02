@@ -10,7 +10,7 @@
     <body>
         <header>
             <button id="highscore">View Highscores</button>
-            <h2 id="time"></h2>
+            <h2 id="time">Time: 0</h2>
         </header>
 
 
@@ -18,20 +18,24 @@
             <div id="container">
                 <h3 id="card-title">Code Quiz</h3>
                 <p id="d">hello</p>
-                <form id="form">
+                <form id="formList" action='#'>
 
                     <ol id="todo-list">
-                        <li><button id="li1" onclick="change(this.id)" type="button"></button></li>
-                        <li><button id="li2" onclick="change(this.id)" type="button"></button></li>
-                        <li><button id="li3" onclick="change(this.id)" type="button"></button></li>
-                        <li><button id="li4" onclick="change(this.id)" type="button"></button></li>
+                        <li><button class="btn" id="li1" onclick="change(this.id)" type="button"></button></li>
+                        <li><button class="btn" id="li2" onclick="change(this.id)" type="button"></button></li>
+                        <li><button class="btn" id="li3" onclick="change(this.id)" type="button"></button></li>
+                        <li><button class="btn" id="li4" onclick="change(this.id)" type="button"></button></li>
                     </ol>
+
+                    <input type="text" class="hide" id="input">
+                    <button type="submit" id="submitButton" class="hide" onclick="location.href='./highscore.html';">Submit</button>
+                    <ul class="hide" id="scoreList"></ul>
 
                     <button id="start-button">start</button>
                 </form>
                 
             </div>
-            <p id="check"></p>
+            <p id="answerStatus"></p>
         </main>
         <script src="./script.js"></script>
     </body>
