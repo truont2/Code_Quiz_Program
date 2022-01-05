@@ -92,7 +92,7 @@ var timeSubtracted = 1;
 //variable stores highscores for later use when displaying scores
 var scores = [];
 
-
+// function initates and displays counter 
 function countdown() {
     times.textContent = 'Time: ' + timeLeft;
 
@@ -114,24 +114,25 @@ var q = 0;
 function init() {
     var storedScores = JSON.parse(localStorage.getItem("highscore"));
     
+    // updates scores array with previous scores if anything is stored in the local storage
     if(storedScores !== null) {
         scores = storedScores;
     }
 
-    card.appendChild(startBtn);
-
-     
+    // activates the game if the start button is clickecd
     startBtn.addEventListener("click", () => {
         title.setAttribute("style", "font-family: San serif");
         countdown();
         question();
 
+        // displays questiion and its answer options
         title.innerHTML = questions[q].question;
         btn1.innerHTML = questions[q].opt1;
         btn2.innerHTML = questions[q].opt2;
         btn3.innerHTML = questions[q].opt3;
         btn4.innerHTML = questions[q].opt4;
 
+        // removes items from display once passed start page
         description.setAttribute("style", "display: none");
         startBtn.setAttribute("style", "display: none");
     });
@@ -151,8 +152,8 @@ function question() {
 function change(id) {
     var chosen = document.getElementById(id).innerHTML;
 
-    // loads the corect list to load next list of questions
-   
+    // updates question if timer is greater than 0
+    // if not ends the game
     if(q == questions.length - 1 ||timeLeft <= 0){
         times.textContent = 0;
         compareAnsw(chosen);
@@ -174,11 +175,12 @@ function change(id) {
 // displays whether the answer chosen is correct or not
 // setTimeout allows answer status to disappear after 2 seconds
 function compareAnsw(answer) { 
-    console.log(answer);
-    console.log(questions[q].correct)
+
+    // displays answer status
     if (answer === questions[q].correct) {
         answerStatus.textContent = "Correct";
 
+        // this removes answer status after 2 seconds
         setTimeout(() => {
             answerStatus.textContent="";
         }, 2000);
@@ -207,8 +209,6 @@ function highscoreDisplay() {
     timeSubtracted = 0;
     title.textContent = "All Done!";
     title.classList.remove("question");
-
-
     answerList.parentNode.removeChild(answerList); 
 
     description.setAttribute("style", "display: block; font-size: 20px");
