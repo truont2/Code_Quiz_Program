@@ -1,50 +1,121 @@
+/* import Lobster font */
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+/* universal styling reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* header styling */
 header {
     padding: 10px 0;
     width: 100%;
-    border: 1px solid black;
+    border-bottom: 2px solid rgb(109, 105, 105);
     box-shadow: 10x 10px 10px grey;
     display: flex;
     justify-content: space-between;
 }
 
+/* styling for game timer */
 h2{
     justify-content: flex-end;
     margin-right: 10px;
 }
 
+/* centers and controls game display */
 main {
-    display: felx; 
+    display: flex; 
     justify-content: center;
+    flex-direction: column;
+    width: 100%;
 }
 
+/* styling for the main game display */
 #container {
     display: block;
     margin: 60px auto;
     text-align: center;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 0 10px 2px;
     transition: 0.3s;
-    width: 60vw;
-    background-color: #f0ead6;
+    width: 800px;
+    max-width: 80%;
+    border-radius: 5px;
+    background-color: #ffffff;
 }
 
-
+/* list styling */
 ol {
     text-align: left;
     margin-left: 20px;
     display: none;
 }
 
+/* class used to hide certain elements at certain times */
 .hide {
     display: none;
 }
 
-.btn {
-    width: 20vw;
-    padding: 10px;
+/* styling for button colors  */
+button {
+    background-color: hsl(200,100%, 50%);
 }
+
+/* styling for answer options */
+.btn {
+    padding: 5px 10px; 
+    color: white;outline: none; 
+    border: 1px solid hsl(200,100%, 30%);
+    border-radius: 5px;
+    width: fit-content;
+}
+
+/* edits answer option text size */
+#li1, #li2, #li3, #li4 {
+    font-size: 20px;
+}
+
+/* position each question */
+.question {
+    text-align: left; 
+    margin: 20px;
+}
+
+/* styles text description at beginning of game */
+p {
+    margin: 20px;
+    text-align: center;
+}
+
+/* style for the highscores at end of the game */
+#scoreList {
+    margin: 20px;
+}
+
+h3 {
+    margin-top: 10px;
+    font-family: 'Lobster', cursive;
+    font-size: 30px;
+}
+
+/* styles spacing for start button and buttons on final score page */
+#start-button, ol, form, #navButtons {
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+/* styles button sizing and color */
+#start-button, #highscore, #goBack, #Clear, #submitButton{
+    color: white;
+    outline: none; 
+    padding: 5px 10px;
+    border: 1px solid hsl(200,100%, 30%);
+    border-radius: 5px;
+}
+
+/* style to add underline for game title */
+.underline {
+    text-decoration: underline;
+}
+

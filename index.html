@@ -4,37 +4,43 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
+        <title>Coding Quiz Game</title>
         <link rel="stylesheet" href="./style.css">
     </head>
+
     <body>
+        <!-- navbar and timer -->
         <header>
             <button id="highscore">View Highscores</button>
             <h2 id="time">Time: 0</h2>
         </header>
 
-
+        <!-- main game content -->
         <main>
             <div id="container">
-                <h3 id="card-title">Code Quiz</h3>
-                <p id="d">hello</p>
+                <h3 id="card-title" class="underline">Coding Quiz Game</h3>
+                <p id="description">Try to answer the following code-related questions within the time limit. Keep in mind that the incorrect answer wil penalize your scoretime by ten seconds!</p>
                 <form id="formList" action='#'>
 
-                    <ol id="todo-list">
+                    <!-- list/button elements for answer choices -->
+                    <ol id="answer-list">
                         <li><button class="btn" id="li1" onclick="change(this.id)" type="button"></button></li>
                         <li><button class="btn" id="li2" onclick="change(this.id)" type="button"></button></li>
                         <li><button class="btn" id="li3" onclick="change(this.id)" type="button"></button></li>
                         <li><button class="btn" id="li4" onclick="change(this.id)" type="button"></button></li>
                     </ol>
 
-                    <input type="text" class="hide" id="input">
+                    <!-- for highscores portion of the game -->
+                    <label for="highscore-input" class="hide"><strong>Enter Initials: </strong><input type="text" class="hide" id="input" maxlength="2"></label>
                     <button type="submit" id="submitButton" class="hide" onclick="location.href='./highscore.html';">Submit</button>
                     <ul class="hide" id="scoreList"></ul>
 
-                    <button id="start-button">start</button>
+                    <!-- start button on the inital start page -->
+                    <button id="start-button">Start Quiz</button>
                 </form>
                 
             </div>
+            <!-- notifys user if the answer chosen is correct or incorrect -->
             <p id="answerStatus"></p>
         </main>
         <script src="./script.js"></script>

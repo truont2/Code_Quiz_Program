@@ -4,20 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Highscore Page</title>
     <link rel="stylesheet" href="./style.css">
 </head>
+
+<!-- main page content -->
 <body>
     <main>
+        <!-- display container -->
         <div id="container">
             <h2>Highscores</h2>
+
+            <!-- display scores  -->
             <form action="">
                 <ul id="scoreList"></ul>
             </form>
-            <button id="goBack">Go back</button>
-            <button id="Clear">Clear scores</button>
+
+            <!-- buttons for clearing scores or restarting the game -->
+            <div id="navButtons">
+                <button id="goBack">Go back</button>
+                <button id="Clear">Clear scores</button>
+            </div>
         </div>
     </main>
+
     <script src="./highscoreScript.js"></script>
 </body>
 </html>
