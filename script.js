@@ -54,7 +54,6 @@ const questions = [
         opt4: "localStorage.store()", 
         correct: "localStorage.setItem()" 
     }
-    
     ,
     {
         question: "______ occurs whenever an event occurs on an element, at first place it will run the handler on it, then its parent, then on other ancestors.",
@@ -244,7 +243,6 @@ function storeScores() {
 }
 
 //listen for click of a button to sotre scores by submitting the form \
-
 // redirects user if highscore button is clicked on the top left
 highscore.addEventListener("click", () => {
     window.location.href='./highscore.html';
