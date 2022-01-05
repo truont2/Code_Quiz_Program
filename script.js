@@ -67,20 +67,20 @@ const questions = [
     ,
     {
         question: "_______ is a open-source CSS framework directed at responsive, mobile-first front-end web development. It contains CSS- and JavaScript-based design templates for typography, forms, buttons, navigation, and other interface components.",
-        opt1: "Bubbling", 
-        opt2: "Scope", 
-        opt3: "Iterating",
-        opt4: "Shadowing", 
-        correct: "Bubbling" 
+        opt1: "Moment", 
+        opt2: "jQuery", 
+        opt3: "Bootstrap",
+        opt4: "React", 
+        correct: "Bootstrap" 
     }
     ,
     {
-        question: "Out of the options, what would you use to select a element using jquery?",
+        question: "Out of the options, what would you use to select a element using javascript?",
         opt1: "jquery.(element)", 
-        opt2: "querySelector(element)", 
+        opt2: "document.querySelector('element')", 
         opt3: "$('element')",
         opt4: "document.select(element)", 
-        correct: "$('element')" 
+        correct: "document.querySelector('element')" 
     }
 ];
 
