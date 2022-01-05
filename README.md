@@ -20,7 +20,7 @@ Code Quiz Game Screenshots
 ![website screenshot](./images/highscore.PNG)
 
 ### Website link
-
+https://truont2.github.io/Code_Quiz_Program/
 
 ### Resources
 * https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onclick
